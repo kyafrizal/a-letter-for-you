@@ -1,0 +1,986 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fff8f5 0%,
+            #ffe5e3 100%
+        );
+
+    color: #4b2929;
+}
+
+
+/* =================================
+   PAGE
+================================= */
+
+.page {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: scale(.8);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+}
+
+
+.page.active {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform: scale(1);
+}
+
+
+/* =================================
+   BACKGROUND HEARTS
+================================= */
+
+.hearts {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+.hearts::before {
+
+    content:
+        "♥　♡　♥　♡　♥　♡　♥　♡　♥　♡　♥　♡　♥　♡";
+
+    position: absolute;
+
+    width: 100%;
+
+    top: 5%;
+
+    color:
+        rgba(245, 80, 90, .45);
+
+    font-size: 14px;
+
+    line-height: 55px;
+
+    animation:
+        sparkle 2s infinite alternate;
+}
+
+
+.hearts::after {
+
+    content:
+        "♡　♥　♡　♥　♡　♥　♡　♥　♡　♥　♡　♥　♡　♥";
+
+    position: absolute;
+
+    width: 100%;
+
+    top: 50%;
+
+    color:
+        rgba(245, 80, 90, .35);
+
+    font-size: 13px;
+
+    line-height: 50px;
+
+    animation:
+        sparkle 2.5s infinite alternate;
+
+    animation-delay: .5s;
+}
+
+
+@keyframes sparkle {
+
+    0% {
+
+        opacity: .2;
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        opacity: .8;
+    }
+
+    100% {
+
+        opacity: .25;
+
+        transform:
+            translateY(10px);
+    }
+}
+
+
+/* =================================
+   TITLE
+================================= */
+
+.title {
+
+    position: absolute;
+
+    top: 80px;
+
+    z-index: 2;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(32px, 7vw, 68px);
+
+    font-weight: 900;
+
+    color: white;
+
+    text-align: center;
+
+    text-shadow:
+        3px 3px #18212a;
+}
+
+
+.title span {
+
+    color: #9cff00;
+}
+
+
+/* =================================
+   ENVELOPE
+================================= */
+
+.envelope-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    animation:
+        floating 2s ease-in-out infinite;
+}
+
+
+.envelope-container p {
+
+    margin-top: 25px;
+
+    font-size: 17px;
+}
+
+
+.envelope-container small {
+
+    display: block;
+
+    margin-top: 8px;
+
+    opacity: .55;
+
+    font-size: 12px;
+}
+
+
+.envelope {
+
+    position: relative;
+
+    width: 160px;
+
+    height: 105px;
+
+    background: #ffe7b7;
+
+    border:
+        4px solid #f27550;
+
+    box-shadow:
+
+        0 5px 0 #df5c3e,
+
+        0 10px 20px
+        rgba(0,0,0,.15);
+
+    overflow: hidden;
+}
+
+
+.envelope-flap {
+
+    position: absolute;
+
+    width: 110px;
+
+    height: 110px;
+
+    left: 21px;
+
+    top: -55px;
+
+    background: #ffedc9;
+
+    border-left:
+        4px solid #f27550;
+
+    border-bottom:
+        4px solid #f27550;
+
+    transform:
+        rotate(45deg);
+}
+
+
+.letter-heart {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -20%);
+
+    color: #f04b39;
+
+    font-size: 40px;
+
+    animation:
+        heartBeat 1s infinite;
+}
+
+
+@keyframes floating {
+
+    0%, 100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-10px);
+    }
+}
+
+
+@keyframes heartBeat {
+
+    0%, 100% {
+
+        transform:
+            translate(-50%, -20%)
+            scale(1);
+    }
+
+    15% {
+
+        transform:
+            translate(-50%, -20%)
+            scale(1.25);
+    }
+
+    30% {
+
+        transform:
+            translate(-50%, -20%)
+            scale(1);
+    }
+
+    45% {
+
+        transform:
+            translate(-50%, -20%)
+            scale(1.18);
+    }
+}
+
+
+/* =================================
+   LETTER WINDOW
+================================= */
+
+.love-window {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(90%, 500px);
+
+    background: #ffb5b9;
+
+    border:
+        8px solid #f2653e;
+
+    box-shadow:
+
+        0 0 0 4px #ff8c68,
+
+        10px 12px 0
+        rgba(180,60,40,.3);
+}
+
+
+/* =================================
+   WINDOW HEADER
+================================= */
+
+.window-header {
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    background: #ffe1df;
+
+    border-bottom:
+        5px solid #f2653e;
+
+    color: #ed5d42;
+
+    font-size: 22px;
+}
+
+
+.window-header span {
+
+    letter-spacing: 5px;
+}
+
+
+/* =================================
+   HEART DECORATION
+================================= */
+
+.window-hearts {
+
+    text-align: center;
+
+    padding: 8px;
+
+    color: #f45d46;
+
+    font-size: 30px;
+}
+
+
+/* =================================
+   QUESTION
+================================= */
+
+.question-box,
+.success-box {
+
+    margin:
+        0 15px 15px;
+
+    min-height: 360px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    background-color:
+        #ffc1c4;
+
+    background-image:
+
+        linear-gradient(
+            45deg,
+            rgba(255,255,255,.25) 25%,
+            transparent 25%
+        ),
+
+        linear-gradient(
+            -45deg,
+            rgba(255,255,255,.25) 25%,
+            transparent 25%
+        );
+
+    background-size:
+        12px 12px;
+}
+
+
+.question {
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+
+.question-sub {
+
+    font-size: 13px;
+
+    margin-bottom: 3px;
+}
+
+
+/* =================================
+   CAT
+================================= */
+
+.cat-love {
+
+    position: relative;
+
+    width: 130px;
+
+    height: 145px;
+
+    margin:
+        5px auto;
+}
+
+
+.cat-head {
+
+    position: absolute;
+
+    width: 75px;
+
+    height: 65px;
+
+    left: 27px;
+
+    top: 20px;
+
+    background: #2c2222;
+
+    border-radius:
+        45% 45% 40% 40%;
+}
+
+
+.cat-head::before,
+.cat-head::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 25px;
+
+    height: 25px;
+
+    top: -12px;
+
+    background: #2c2222;
+}
+
+
+.cat-head::before {
+
+    left: 5px;
+
+    transform:
+        rotate(35deg);
+}
+
+
+.cat-head::after {
+
+    right: 5px;
+
+    transform:
+        rotate(-35deg);
+}
+
+
+.eye {
+
+    position: absolute;
+
+    top: 25px;
+
+    color: white;
+
+    font-size: 13px;
+}
+
+
+.eye.left {
+
+    left: 18px;
+}
+
+
+.eye.right {
+
+    right: 18px;
+}
+
+
+.cat-body {
+
+    position: absolute;
+
+    width: 75px;
+
+    height: 65px;
+
+    left: 27px;
+
+    top: 78px;
+
+    background: #302424;
+
+    border-radius: 50%;
+}
+
+
+.cat-heart {
+
+    position: absolute;
+
+    left: 17px;
+
+    top: -10px;
+
+    color: #f04b39;
+
+    font-size: 55px;
+
+    animation:
+        heartBeat 1s infinite;
+}
+
+
+.cat-tail {
+
+    position: absolute;
+
+    right: 5px;
+
+    top: 75px;
+
+    font-size: 45px;
+
+    transform:
+        rotate(-20deg);
+}
+
+
+/* =================================
+   BUTTONS
+================================= */
+
+.buttons {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 30px;
+
+    height: 70px;
+
+    margin-top: 5px;
+}
+
+
+button {
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.yes-btn,
+.no-btn {
+
+    width: 80px;
+
+    height: 42px;
+
+    background: #ffe7e5;
+
+    color: #ed634b;
+
+    border:
+        3px solid #ef7659;
+
+    box-shadow:
+        3px 3px #df6045;
+
+    font-size: 16px;
+}
+
+
+.yes-btn:hover {
+
+    transform:
+        scale(1.08);
+}
+
+
+/* NO */
+
+.no-wrapper {
+
+    position: relative;
+
+    width: 80px;
+
+    height: 42px;
+}
+
+
+.no-btn {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    transition:
+        left .15s ease,
+        top .15s ease;
+}
+
+
+/* =================================
+   SUCCESS
+================================= */
+
+.success-box h2 {
+
+    margin-bottom: 8px;
+
+    font-size: 19px;
+}
+
+
+.opening-text {
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 5px;
+}
+
+
+/* =================================
+   DANCING CAT
+================================= */
+
+.dancing-cat {
+
+    position: relative;
+
+    width: 130px;
+
+    height: 155px;
+
+    margin: auto;
+
+    animation:
+        dance .55s
+        infinite alternate
+        ease-in-out;
+}
+
+
+.dance-body {
+
+    position: absolute;
+
+    left: 10px;
+
+    top: 25px;
+
+    font-size: 105px;
+}
+
+
+.dance-head {
+
+    position: absolute;
+
+    z-index: 2;
+
+    top: 20px;
+
+    left: 47px;
+
+    color: white;
+
+    font-size: 13px;
+
+    letter-spacing: 15px;
+}
+
+
+.floating-heart {
+
+    position: absolute;
+
+    top: 0;
+
+    right: 5px;
+
+    color: #f04b39;
+
+    font-size: 28px;
+
+    animation:
+        heartFloat 1s infinite;
+}
+
+
+@keyframes dance {
+
+    from {
+
+        transform:
+            rotate(-8deg)
+            translateX(-5px);
+    }
+
+    to {
+
+        transform:
+            rotate(8deg)
+            translateX(5px);
+    }
+}
+
+
+@keyframes heartFloat {
+
+    0% {
+
+        transform:
+            translateY(5px)
+            scale(.9);
+
+        opacity: .5;
+    }
+
+    50% {
+
+        transform:
+            translateY(-10px)
+            scale(1.15);
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translateY(-20px)
+            scale(.9);
+
+        opacity: 0;
+    }
+}
+
+
+/* =================================
+   MESSAGE
+================================= */
+
+.message-title {
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+}
+
+
+textarea {
+
+    width: 90%;
+
+    min-height: 75px;
+
+    resize: none;
+
+    padding: 10px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    color: #4b2929;
+
+    background: #fff1ed;
+
+    border:
+        3px solid #ef7659;
+
+    outline: none;
+}
+
+
+textarea:focus {
+
+    box-shadow:
+        0 0 0 3px
+        rgba(239,118,89,.25);
+}
+
+
+.send-btn {
+
+    margin-top: 10px;
+
+    padding: 10px 15px;
+
+    border:
+        3px solid #ef7659;
+
+    background: #ffe7e5;
+
+    color: #e85d46;
+
+    box-shadow:
+        3px 3px #df6045;
+}
+
+
+#result {
+
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    line-height: 1.4;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+    .title {
+
+        top: 65px;
+
+        font-size: 38px;
+
+        line-height: 1.1;
+    }
+
+
+    .envelope {
+
+        width: 145px;
+
+        height: 95px;
+    }
+
+
+    .love-window {
+
+        width: 88%;
+    }
+
+
+    .window-header {
+
+        height: 45px;
+
+        font-size: 18px;
+    }
+
+
+    .window-hearts {
+
+        font-size: 25px;
+    }
+
+
+    .question-box,
+    .success-box {
+
+        min-height: 350px;
+
+        padding: 15px;
+    }
+
+}

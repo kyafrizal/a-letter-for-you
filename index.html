@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>A Letter For You</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="hearts"></div>
+
+
+    <!-- =========================
+         HALAMAN PERTAMA
+    ========================== -->
+
+    <section id="home" class="page active">
+
+        <h1 class="title">
+            <span>A LETTER</span> FOR YOU
+        </h1>
+
+        <div
+            class="envelope-container"
+            onclick="openLetter()"
+        >
+
+            <div class="envelope">
+
+                <div class="envelope-flap"></div>
+
+                <div class="letter-heart">
+                    ♥
+                </div>
+
+            </div>
+
+            <p>
+                ♡ Something I Want To Tell You ♡
+            </p>
+
+            <small>
+                click the letter
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HALAMAN KEDUA
+    ========================== -->
+
+    <section id="question" class="page">
+
+        <div class="love-window">
+
+            <div class="window-header">
+
+                <b>LETTER</b>
+
+                <span>
+                    − □ ×
+                </span>
+
+            </div>
+
+
+            <div class="window-hearts">
+                ♥　♥　♥
+            </div>
+
+
+            <div class="question-box">
+
+                <p class="question">
+                    I have something to tell you...
+                </p>
+
+                <p class="question-sub">
+                    Would you like to hear what's
+                    inside my heart?
+                </p>
+
+
+                <!-- KUCING -->
+
+                <div class="cat cat-love">
+
+                    <div class="cat-head">
+
+                        <span class="eye left">
+                            ●
+                        </span>
+
+                        <span class="eye right">
+                            ●
+                        </span>
+
+                    </div>
+
+
+                    <div class="cat-body">
+
+                        <div class="cat-heart">
+                            ♥
+                        </div>
+
+                    </div>
+
+
+                    <div class="cat-tail">
+                        〰
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <div class="buttons">
+
+                    <button
+                        class="yes-btn"
+                        onclick="sayYes()"
+                    >
+                        YES
+                    </button>
+
+
+                    <div class="no-wrapper">
+
+                        <button
+                            class="no-btn"
+                            id="noButton"
+                            onmouseover="runAway()"
+                            ontouchstart="runAway()"
+                            onclick="runAway()"
+                        >
+                            NO
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HALAMAN KETIGA
+    ========================== -->
+
+    <section id="success" class="page">
+
+        <div class="love-window">
+
+            <div class="window-header">
+
+                <b>MY LETTER</b>
+
+                <span>
+                    − □ ×
+                </span>
+
+            </div>
+
+
+            <div class="window-hearts">
+                ♥　♥　♥
+            </div>
+
+
+            <div class="success-box">
+
+                <h2>
+                    I KNEW YOU'D SAY YES ❤️
+                </h2>
+
+
+                <p class="opening-text">
+                    There are some words
+                    I've been keeping in my heart...
+                </p>
+
+
+                <!-- KUCING -->
+
+                <div class="dancing-cat">
+
+                    <div class="dance-head">
+
+                        <span>●</span>
+                        <span>●</span>
+
+                    </div>
+
+
+                    <div class="dance-body">
+                        🐈‍⬛
+                    </div>
+
+
+                    <div class="floating-heart">
+                        ♥
+                    </div>
+
+                </div>
+
+
+                <p class="message-title">
+                    A little message for you:
+                </p>
+
+
+                <textarea
+                    id="message"
+                    placeholder="Tulis kata-kata yang ingin kamu sampaikan kepadanya..."
+                ></textarea>
+
+
+                <button
+                    class="send-btn"
+                    onclick="sendMessage()"
+                >
+                    ♥ SAVE MY WORDS
+                </button>
+
+
+                <p id="result"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
