@@ -1,6 +1,6 @@
-/* ============================= */
-/* CHANGE PAGE */
-/* ============================= */
+/* =========================
+   PAGE SYSTEM
+========================= */
 
 function showPage(pageId) {
 
@@ -10,16 +10,12 @@ function showPage(pageId) {
 
     document.getElementById(pageId).classList.add("active");
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
 }
 
 
-/* ============================= */
-/* OPEN ENVELOPE */
-/* ============================= */
+/* =========================
+   OPEN ENVELOPE
+========================= */
 
 function openLetter() {
 
@@ -28,38 +24,51 @@ function openLetter() {
 }
 
 
-/* ============================= */
-/* NO BUTTON RUN AWAY */
-/* ============================= */
+/* =========================
+   NO BUTTON RUNS AWAY
+========================= */
 
 function runAway() {
 
     const button = document.getElementById("noButton");
 
-    const maxX = window.innerWidth / 2 - 120;
-    const maxY = window.innerHeight / 2 - 80;
+    const parent = button.parentElement;
 
-    const randomX =
-        Math.floor(Math.random() * maxX * 2) - maxX;
+    const parentWidth = parent.clientWidth;
+    const parentHeight = parent.clientHeight;
 
-    const randomY =
-        Math.floor(Math.random() * maxY * 2) - maxY;
+    const buttonWidth = button.offsetWidth;
+    const buttonHeight = button.offsetHeight;
 
-    button.style.position = "fixed";
 
-    button.style.left =
-        `calc(50% + ${randomX}px)`;
+    let randomX =
+        Math.random() *
+        (parentWidth - buttonWidth);
 
-    button.style.top =
-        `calc(50% + ${randomY}px)`;
 
-    button.style.zIndex = "9999";
+    let randomY =
+        Math.random() *
+        (parentHeight - buttonHeight);
+
+
+    /* jangan terlalu dekat dengan YES */
+
+    randomX = Math.max(5, randomX);
+    randomY = Math.max(5, randomY);
+
+
+    button.style.position = "absolute";
+
+    button.style.left = randomX + "px";
+
+    button.style.top = randomY + "px";
+
 }
 
 
-/* ============================= */
-/* YES BUTTON */
-/* ============================= */
+/* =========================
+   YES
+========================= */
 
 function sayYes() {
 
@@ -70,73 +79,98 @@ function sayYes() {
 }
 
 
-/* ============================= */
-/* SAVE MESSAGE */
-/* ============================= */
+/* =========================
+   SAVE MESSAGE
+========================= */
 
-function saveMessage() {
+function sendMessage() {
 
     const message =
         document.getElementById("message").value.trim();
 
-    const savedMessage =
-        document.getElementById("savedMessage");
+
+    const result =
+        document.getElementById("result");
 
 
     if (message === "") {
 
-        savedMessage.innerHTML =
-            "♡ Tulis pesanmu terlebih dahulu ya...";
+        result.innerHTML =
+            "♡ Tulis sesuatu terlebih dahulu...";
 
         return;
+
     }
 
 
-    /* SAVE TO BROWSER */
+    /* SIMPAN PESAN DI BROWSER */
 
     localStorage.setItem(
-        "loveLetterMessage",
+        "myLetterMessage",
         message
     );
 
 
-    savedMessage.innerHTML =
-        "♡ Your words have been saved ♡\n\n" +
-        "\"" + message + "\"";
+    result.innerHTML =
+        `
+        ♡ Your words have been saved ♡
+        <br><br>
+        <i>"${escapeHTML(message)}"</i>
+        `;
 
-
-    document.getElementById("message").value =
-        message;
 }
 
 
-/* ============================= */
-/* LOAD SAVED MESSAGE */
-/* ============================= */
+/* =========================
+   LOAD SAVED MESSAGE
+========================= */
 
 function loadSavedMessage() {
 
-    const saved =
-        localStorage.getItem("loveLetterMessage");
+    const savedMessage =
+        localStorage.getItem("myLetterMessage");
 
-    if (saved) {
 
-        document.getElementById("message").value =
-            saved;
-
+    if (!savedMessage) {
+        return;
     }
+
+
+    document.getElementById("message").value =
+        savedMessage;
+
+
+    document.getElementById("result").innerHTML =
+        `
+        ♡ Your words are still here ♡
+        <br><br>
+        <i>"${escapeHTML(savedMessage)}"</i>
+        `;
+
 }
 
 
-/* ============================= */
-/* LOAD WHEN WEBSITE OPENS */
-/* ============================= */
+/* =========================
+   SECURITY
+========================= */
 
-window.addEventListener(
-    "DOMContentLoaded",
-    function () {
+function escapeHTML(text) {
 
-        loadSavedMessage();
+    const div = document.createElement("div");
 
-    }
-);
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
+   LOAD MESSAGE WHEN PAGE OPENS
+========================= */
+
+window.addEventListener("load", function() {
+
+    loadSavedMessage();
+
+});
