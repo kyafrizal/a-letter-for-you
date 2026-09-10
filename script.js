@@ -4,8 +4,10 @@
 
 function showPage(pageId) {
 
-    document.querySelectorAll(".page").forEach(page => {
+    document.querySelectorAll(".page").forEach(function(page) {
+
         page.classList.remove("active");
+
     });
 
     document.getElementById(pageId).classList.add("active");
@@ -25,152 +27,146 @@ function openLetter() {
 
 
 /* =========================
-   NO BUTTON RUNS AWAY
+   NO BUTTON
 ========================= */
+
+const noButton = document.getElementById("noButton");
+
 
 function runAway() {
 
     const button = document.getElementById("noButton");
 
-    const parent = button.parentElement;
+    /*
+       Tombol akan berpindah secara acak.
+       Jadi ketika cursor mendekat,
+       tombol langsung kabur.
+    */
 
-    const parentWidth = parent.clientWidth;
-    const parentHeight = parent.clientHeight;
+    const maxX = Math.min(
+        window.innerWidth / 2 - 100,
+        250
+    );
 
-    const buttonWidth = button.offsetWidth;
-    const buttonHeight = button.offsetHeight;
+    const maxY = 180;
 
+    const randomX =
+        Math.floor(Math.random() * (maxX * 2 + 1))
+        - maxX;
 
-    let randomX =
-        Math.random() *
-        (parentWidth - buttonWidth);
+    const randomY =
+        Math.floor(Math.random() * (maxY * 2 + 1))
+        - maxY;
 
+    button.style.position = "relative";
 
-    let randomY =
-        Math.random() *
-        (parentHeight - buttonHeight);
+    button.style.left =
+        randomX + "px";
 
-
-    /* jangan terlalu dekat dengan YES */
-
-    randomX = Math.max(5, randomX);
-    randomY = Math.max(5, randomY);
-
-
-    button.style.position = "absolute";
-
-    button.style.left = randomX + "px";
-
-    button.style.top = randomY + "px";
+    button.style.top =
+        randomY + "px";
 
 }
 
 
 /* =========================
-   YES
+   YES BUTTON
 ========================= */
 
 function sayYes() {
 
     showPage("success");
 
-    loadSavedMessage();
-
 }
 
 
 /* =========================
-   SAVE MESSAGE
+   SAVE MY WORDS
 ========================= */
 
-function sendMessage() {
-
-    const message =
-        document.getElementById("message").value.trim();
-
-
-    const result =
-        document.getElementById("result");
-
-
-    if (message === "") {
-
-        result.innerHTML =
-            "♡ Tulis sesuatu terlebih dahulu...";
-
-        return;
-
-    }
-
-
-    /* SIMPAN PESAN DI BROWSER */
-
-    localStorage.setItem(
-        "myLetterMessage",
-        message
-    );
-
-
-    result.innerHTML =
-        `
-        ♡ Your words have been saved ♡
-        <br><br>
-        <i>"${escapeHTML(message)}"</i>
-        `;
-
-}
-
-
-/* =========================
-   LOAD SAVED MESSAGE
-========================= */
-
-function loadSavedMessage() {
+function showLove() {
 
     const savedMessage =
-        localStorage.getItem("myLetterMessage");
+        document.getElementById("savedMessage");
+
+    savedMessage.innerHTML =
+        "♡ Your words have been saved forever ♡";
+
+}
 
 
-    if (!savedMessage) {
-        return;
+/* =========================
+   EXTRA HEART EFFECT
+========================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const heart =
+            document.createElement("span");
+
+        heart.innerHTML = "♥";
+
+        heart.style.position = "fixed";
+
+        heart.style.left =
+            event.clientX + "px";
+
+        heart.style.top =
+            event.clientY + "px";
+
+        heart.style.color = "#ef6c91";
+
+        heart.style.fontSize = "25px";
+
+        heart.style.pointerEvents = "none";
+
+        heart.style.zIndex = "9999";
+
+        heart.style.animation =
+            "clickHeart 1s forwards";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function() {
+
+            heart.remove();
+
+        }, 1000);
+
+    }
+);
+
+
+/* =========================
+   CLICK HEART ANIMATION
+========================= */
+
+const style =
+    document.createElement("style");
+
+style.innerHTML = `
+
+@keyframes clickHeart {
+
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
     }
 
+    50% {
+        transform: translate(-50%, -100px) scale(1.2);
+        opacity: 1;
+    }
 
-    document.getElementById("message").value =
-        savedMessage;
-
-
-    document.getElementById("result").innerHTML =
-        `
-        ♡ Your words are still here ♡
-        <br><br>
-        <i>"${escapeHTML(savedMessage)}"</i>
-        `;
+    100% {
+        transform: translate(-50%, -160px) scale(0.5);
+        opacity: 0;
+    }
 
 }
 
+`;
 
-/* =========================
-   SECURITY
-========================= */
-
-function escapeHTML(text) {
-
-    const div = document.createElement("div");
-
-    div.textContent = text;
-
-    return div.innerHTML;
-
-}
-
-
-/* =========================
-   LOAD MESSAGE WHEN PAGE OPENS
-========================= */
-
-window.addEventListener("load", function() {
-
-    loadSavedMessage();
-
-});
+document.head.appendChild(style);
