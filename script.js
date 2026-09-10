@@ -1,6 +1,6 @@
-/* ===============================
-   PINDAH HALAMAN
-================================ */
+/* ============================= */
+/* CHANGE PAGE */
+/* ============================= */
 
 function showPage(pageId) {
 
@@ -10,12 +10,16 @@ function showPage(pageId) {
 
     document.getElementById(pageId).classList.add("active");
 
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
-/* ===============================
-   BUKA AMPLOP
-================================ */
+/* ============================= */
+/* OPEN ENVELOPE */
+/* ============================= */
 
 function openLetter() {
 
@@ -24,86 +28,115 @@ function openLetter() {
 }
 
 
-/* ===============================
-   TOMBOL NO KABUR
-================================ */
+/* ============================= */
+/* NO BUTTON RUN AWAY */
+/* ============================= */
 
 function runAway() {
 
     const button = document.getElementById("noButton");
 
-    const maxX = window.innerWidth * 0.30;
-    const maxY = window.innerHeight * 0.25;
+    const maxX = window.innerWidth / 2 - 120;
+    const maxY = window.innerHeight / 2 - 80;
 
     const randomX =
-        Math.floor(Math.random() * (maxX * 2)) - maxX;
+        Math.floor(Math.random() * maxX * 2) - maxX;
 
     const randomY =
-        Math.floor(Math.random() * (maxY * 2)) - maxY;
+        Math.floor(Math.random() * maxY * 2) - maxY;
 
-    button.style.position = "relative";
+    button.style.position = "fixed";
 
-    button.style.left = randomX + "px";
+    button.style.left =
+        `calc(50% + ${randomX}px)`;
 
-    button.style.top = randomY + "px";
+    button.style.top =
+        `calc(50% + ${randomY}px)`;
 
+    button.style.zIndex = "9999";
 }
 
 
-/* ===============================
-   YES
-================================ */
+/* ============================= */
+/* YES BUTTON */
+/* ============================= */
 
 function sayYes() {
 
     showPage("success");
 
+    loadSavedMessage();
+
 }
 
 
-/* ===============================
-   SIMPAN PESAN
-================================ */
+/* ============================= */
+/* SAVE MESSAGE */
+/* ============================= */
 
-function sendMessage() {
+function saveMessage() {
 
     const message =
         document.getElementById("message").value.trim();
 
-    const result =
-        document.getElementById("result");
+    const savedMessage =
+        document.getElementById("savedMessage");
 
 
     if (message === "") {
 
-        result.innerHTML =
-            "♡ Tulis sesuatu terlebih dahulu...";
+        savedMessage.innerHTML =
+            "♡ Tulis pesanmu terlebih dahulu ya...";
 
         return;
-
     }
 
 
-    result.innerHTML =
-        `
-        ♡ Your words have been saved ♡
-        <br><br>
-        <i>"${escapeHTML(message)}"</i>
-        `;
+    /* SAVE TO BROWSER */
 
+    localStorage.setItem(
+        "loveLetterMessage",
+        message
+    );
+
+
+    savedMessage.innerHTML =
+        "♡ Your words have been saved ♡\n\n" +
+        "\"" + message + "\"";
+
+
+    document.getElementById("message").value =
+        message;
 }
 
 
-/* ===============================
-   MENCEGAH HTML DI PESAN
-================================ */
+/* ============================= */
+/* LOAD SAVED MESSAGE */
+/* ============================= */
 
-function escapeHTML(text) {
+function loadSavedMessage() {
 
-    const div = document.createElement("div");
+    const saved =
+        localStorage.getItem("loveLetterMessage");
 
-    div.textContent = text;
+    if (saved) {
 
-    return div.innerHTML;
+        document.getElementById("message").value =
+            saved;
 
+    }
 }
+
+
+/* ============================= */
+/* LOAD WHEN WEBSITE OPENS */
+/* ============================= */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        loadSavedMessage();
+
+    }
+);
