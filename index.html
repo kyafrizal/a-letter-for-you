@@ -3,34 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Letter For You 💌</title>
+
+    <title>A Letter For You</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- BACKGROUND DECORATION -->
-    <div class="decorations">
+    <!-- BACKGROUND HEARTS -->
+    <div class="hearts">
         <span>♡</span>
         <span>♥</span>
-        <span>✦</span>
-        <span>♡</span>
-        <span>✧</span>
-        <span>♥</span>
-        <span>✦</span>
         <span>♡</span>
         <span>♥</span>
-        <span>✧</span>
-        <span>♡</span>
-        <span>✦</span>
-        <span>♥</span>
-        <span>♡</span>
-        <span>✧</span>
-        <span>♥</span>
-        <span>✦</span>
         <span>♡</span>
         <span>♥</span>
-        <span>✧</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
     </div>
 
 
@@ -38,97 +40,92 @@
 
     <section id="home" class="page active">
 
-        <div class="cloud cloud1"></div>
-        <div class="cloud cloud2"></div>
-
         <h1>A LETTER <span>FOR YOU</span></h1>
 
-        <p class="top-heart">♡ ✦ ♥ ✦ ♡</p>
+        <p class="subtitle">
+            ♡ Something I Want To Tell You ♡
+        </p>
 
-        <div class="envelope" onclick="openLetter()">
+        <div class="envelope-area" onclick="openLetter()">
 
-            <div class="envelope-back"></div>
+            <div class="envelope">
 
-            <div class="envelope-flap"></div>
+                <div class="envelope-flap"></div>
 
-            <div class="letter-paper">
-                💌
-            </div>
+                <div class="envelope-heart">
+                    ♥
+                </div>
 
-            <div class="envelope-front"></div>
-
-            <div class="envelope-heart">♥</div>
-
-            <div class="ribbon">
-                <div class="ribbon-left"></div>
-                <div class="ribbon-right"></div>
-                <div class="ribbon-center"></div>
             </div>
 
         </div>
 
-        <h2>♡ Something I Want To Tell You ♡</h2>
-        <p class="click-text">click the letter</p>
+        <p class="click-text">
+            click the letter ♡
+        </p>
 
     </section>
+
 
 
     <!-- ================= PAGE 2 ================= -->
 
     <section id="question" class="page">
 
-        <div class="window">
+        <div class="letter-window">
 
             <div class="window-header">
-                <b>LETTER</b>
+
+                <div class="window-title">
+                    MY LETTER
+                </div>
 
                 <div class="window-buttons">
-                    <span>−</span>
-                    <span>□</span>
-                    <span>×</span>
+                    −　□　×
                 </div>
+
             </div>
 
-            <div class="window-body">
 
-                <div class="header-hearts">
+            <div class="letter-content">
+
+                <div class="top-hearts">
                     ♥　♥　♥
                 </div>
 
-                <h2>I have something to tell you...</h2>
+                <h2>
+                    I HAVE SOMETHING<br>
+                    TO TELL YOU...
+                </h2>
 
-                <p>
+                <p class="question-text">
                     Would you like to hear what's inside my heart?
                 </p>
 
-                <!-- CAT -->
 
+                <!-- CAT -->
                 <div class="cat cat-black">
 
                     <div class="cat-ear left"></div>
                     <div class="cat-ear right"></div>
 
                     <div class="cat-face">
-                        <div class="eye eye-left"></div>
-                        <div class="eye eye-right"></div>
 
-                        <div class="nose">♥</div>
+                        <div class="eye left-eye"></div>
+                        <div class="eye right-eye"></div>
 
-                        <div class="mouth"></div>
+                        <div class="cat-nose">♡</div>
+
+                        <div class="cat-mouth"></div>
+
                     </div>
 
                     <div class="cat-body"></div>
 
                     <div class="cat-tail"></div>
 
-                    <!-- HEART -->
-                    <div class="cat-heart">♥</div>
-
-                    <!-- BOW -->
-                    <div class="bow">
-                        <div></div>
-                        <div></div>
-                        <span></span>
+                    <div class="cat-heart">
+                        ♥
                     </div>
 
                 </div>
@@ -136,20 +133,20 @@
 
                 <!-- BUTTONS -->
 
-                <div class="buttons">
+                <div class="choice-buttons">
 
                     <button
-                        id="yesButton"
+                        class="yes-button"
                         onclick="sayYes()">
-                        ♥ YES
+                        YES
                     </button>
 
                     <button
                         id="noButton"
+                        class="no-button"
                         onmouseover="runAway()"
-                        ontouchstart="runAway()"
-                        onclick="runAway()">
-                        ♥ NO
+                        ontouchstart="runAway()">
+                        NO
                     </button>
 
                 </div>
@@ -161,34 +158,39 @@
     </section>
 
 
+
     <!-- ================= PAGE 3 ================= -->
 
     <section id="success" class="page">
 
-        <div class="window success-window">
+        <div class="letter-window">
 
             <div class="window-header">
-                <b>MY LETTER</b>
+
+                <div class="window-title">
+                    MY LETTER
+                </div>
 
                 <div class="window-buttons">
-                    <span>−</span>
-                    <span>□</span>
-                    <span>×</span>
+                    −　□　×
                 </div>
+
             </div>
 
-            <div class="window-body">
 
-                <div class="header-hearts">
+            <div class="letter-content">
+
+                <div class="top-hearts">
                     ♥　♥　♥
                 </div>
 
+
                 <h2>
                     I KNEW YOU'D SAY YES
-                    <span class="beating">♥</span>
+                    <span>♥</span>
                 </h2>
 
-                <p>
+                <p class="question-text">
                     There are some words I've been keeping in my heart...
                 </p>
 
@@ -197,15 +199,22 @@
 
                 <div class="cute-cat">
 
-                    <div class="cute-ear left"></div>
-                    <div class="cute-ear right"></div>
+                    <div class="cat-ears">
+                        <span></span>
+                        <span></span>
+                    </div>
 
                     <div class="cute-face">
 
-                        <div class="cute-eye left-eye">◕</div>
-                        <div class="cute-eye right-eye">◕</div>
+                        <div class="cute-eye left"></div>
+                        <div class="cute-eye right"></div>
 
-                        <div class="cute-mouth">⌣</div>
+                        <div class="cute-blush left"></div>
+                        <div class="cute-blush right"></div>
+
+                        <div class="cute-mouth">
+                            ♡
+                        </div>
 
                     </div>
 
@@ -213,11 +222,16 @@
 
                     <div class="cute-tail"></div>
 
-                    <!-- PINK BOW -->
-                    <div class="big-bow">
-                        <div class="bow-piece one"></div>
-                        <div class="bow-piece two"></div>
-                        <div class="bow-knot"></div>
+                    <!-- PITA -->
+                    <div class="pink-bow">
+                        <span></span>
+                        <span></span>
+                        <b>♥</b>
+                    </div>
+
+                    <!-- HEART -->
+                    <div class="big-heart">
+                        ♥
                     </div>
 
                 </div>
@@ -225,30 +239,38 @@
 
                 <!-- STARS -->
 
-                <div class="stars-around">
-                    <span>✦</span>
-                    <span>✧</span>
-                    <span>★</span>
-                    <span>✦</span>
-                    <span>✧</span>
-                    <span>♥</span>
-                </div>
+                <div class="star star1">✦</div>
+                <div class="star star2">✧</div>
+                <div class="star star3">✦</div>
+                <div class="star star4">✧</div>
 
 
-                <h3>A little message for you:</h3>
+                <h3>
+                    A little message for you:
+                </h3>
+
 
                 <textarea
                     id="message"
-                    placeholder="Tulis kata-kata yang ingin kamu sampaikan kepadanya...">
-                </textarea>
+                    placeholder="Tulis kata-kata yang ingin kamu sampaikan kepadanya..."
+                ></textarea>
+
 
                 <button
                     class="save-button"
-                    onclick="sendMessage()">
+                    onclick="saveMessage()">
+
                     ♥ SAVE MY WORDS
+
                 </button>
 
-                <div id="result"></div>
+
+                <p id="savedMessage" class="saved-message"></p>
+
+
+                <div class="decoration-bottom">
+                    ♡　✦　♥　✧　♡
+                </div>
 
             </div>
 
