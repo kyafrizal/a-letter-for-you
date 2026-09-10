@@ -1,157 +1,156 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>A Letter For You</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter For You 💌</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- BACKGROUND -->
-    <div class="hearts"></div>
+    <!-- BACKGROUND DECORATION -->
+    <div class="decorations">
+        <span>♡</span>
+        <span>♥</span>
+        <span>✦</span>
+        <span>♡</span>
+        <span>✧</span>
+        <span>♥</span>
+        <span>✦</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>✧</span>
+        <span>♡</span>
+        <span>✦</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>✧</span>
+        <span>♥</span>
+        <span>✦</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>✧</span>
+    </div>
 
 
-    <!-- =========================
-         HALAMAN PERTAMA
-    ========================== -->
+    <!-- ================= PAGE 1 ================= -->
 
     <section id="home" class="page active">
 
-        <h1 class="title">
-            <span>A LETTER</span> FOR YOU
-        </h1>
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
 
-        <div
-            class="envelope-container"
-            onclick="openLetter()"
-        >
+        <h1>A LETTER <span>FOR YOU</span></h1>
 
-            <div class="envelope">
+        <p class="top-heart">♡ ✦ ♥ ✦ ♡</p>
 
-                <div class="envelope-flap"></div>
+        <div class="envelope" onclick="openLetter()">
 
-                <div class="letter-heart">
-                    ♥
-                </div>
+            <div class="envelope-back"></div>
 
+            <div class="envelope-flap"></div>
+
+            <div class="letter-paper">
+                💌
             </div>
 
-            <p>
-                ♡ Something I Want To Tell You ♡
-            </p>
+            <div class="envelope-front"></div>
 
-            <small>
-                click the letter
-            </small>
+            <div class="envelope-heart">♥</div>
+
+            <div class="ribbon">
+                <div class="ribbon-left"></div>
+                <div class="ribbon-right"></div>
+                <div class="ribbon-center"></div>
+            </div>
 
         </div>
+
+        <h2>♡ Something I Want To Tell You ♡</h2>
+        <p class="click-text">click the letter</p>
 
     </section>
 
 
-    <!-- =========================
-         HALAMAN KEDUA
-    ========================== -->
+    <!-- ================= PAGE 2 ================= -->
 
     <section id="question" class="page">
 
-        <div class="love-window">
+        <div class="window">
 
             <div class="window-header">
-
                 <b>LETTER</b>
 
-                <span>
-                    − □ ×
-                </span>
-
+                <div class="window-buttons">
+                    <span>−</span>
+                    <span>□</span>
+                    <span>×</span>
+                </div>
             </div>
 
+            <div class="window-body">
 
-            <div class="window-hearts">
-                ♥　♥　♥
-            </div>
+                <div class="header-hearts">
+                    ♥　♥　♥
+                </div>
 
+                <h2>I have something to tell you...</h2>
 
-            <div class="question-box">
-
-                <p class="question">
-                    I have something to tell you...
+                <p>
+                    Would you like to hear what's inside my heart?
                 </p>
 
-                <p class="question-sub">
-                    Would you like to hear what's
-                    inside my heart?
-                </p>
+                <!-- CAT -->
 
+                <div class="cat cat-black">
 
-                <!-- KUCING -->
+                    <div class="cat-ear left"></div>
+                    <div class="cat-ear right"></div>
 
-                <div class="cat cat-love">
+                    <div class="cat-face">
+                        <div class="eye eye-left"></div>
+                        <div class="eye eye-right"></div>
 
-                    <div class="cat-head">
+                        <div class="nose">♥</div>
 
-                        <span class="eye left">
-                            ●
-                        </span>
-
-                        <span class="eye right">
-                            ●
-                        </span>
-
+                        <div class="mouth"></div>
                     </div>
 
+                    <div class="cat-body"></div>
 
-                    <div class="cat-body">
+                    <div class="cat-tail"></div>
 
-                        <div class="cat-heart">
-                            ♥
-                        </div>
+                    <!-- HEART -->
+                    <div class="cat-heart">♥</div>
 
-                    </div>
-
-
-                    <div class="cat-tail">
-                        〰
+                    <!-- BOW -->
+                    <div class="bow">
+                        <div></div>
+                        <div></div>
+                        <span></span>
                     </div>
 
                 </div>
 
 
-                <!-- BUTTON -->
+                <!-- BUTTONS -->
 
                 <div class="buttons">
 
                     <button
-                        class="yes-btn"
-                        onclick="sayYes()"
-                    >
-                        YES
+                        id="yesButton"
+                        onclick="sayYes()">
+                        ♥ YES
                     </button>
 
-
-                    <div class="no-wrapper">
-
-                        <button
-                            class="no-btn"
-                            id="noButton"
-                            onmouseover="runAway()"
-                            ontouchstart="runAway()"
-                            onclick="runAway()"
-                        >
-                            NO
-                        </button>
-
-                    </div>
+                    <button
+                        id="noButton"
+                        onmouseover="runAway()"
+                        ontouchstart="runAway()"
+                        onclick="runAway()">
+                        ♥ NO
+                    </button>
 
                 </div>
 
@@ -162,87 +161,94 @@
     </section>
 
 
-    <!-- =========================
-         HALAMAN KETIGA
-    ========================== -->
+    <!-- ================= PAGE 3 ================= -->
 
     <section id="success" class="page">
 
-        <div class="love-window">
+        <div class="window success-window">
 
             <div class="window-header">
-
                 <b>MY LETTER</b>
 
-                <span>
-                    − □ ×
-                </span>
-
+                <div class="window-buttons">
+                    <span>−</span>
+                    <span>□</span>
+                    <span>×</span>
+                </div>
             </div>
 
+            <div class="window-body">
 
-            <div class="window-hearts">
-                ♥　♥　♥
-            </div>
-
-
-            <div class="success-box">
+                <div class="header-hearts">
+                    ♥　♥　♥
+                </div>
 
                 <h2>
-                    I KNEW YOU'D SAY YES ❤️
+                    I KNEW YOU'D SAY YES
+                    <span class="beating">♥</span>
                 </h2>
 
-
-                <p class="opening-text">
-                    There are some words
-                    I've been keeping in my heart...
+                <p>
+                    There are some words I've been keeping in my heart...
                 </p>
 
 
-                <!-- KUCING -->
+                <!-- CUTE CAT -->
 
-                <div class="dancing-cat">
+                <div class="cute-cat">
 
-                    <div class="dance-head">
+                    <div class="cute-ear left"></div>
+                    <div class="cute-ear right"></div>
 
-                        <span>●</span>
-                        <span>●</span>
+                    <div class="cute-face">
+
+                        <div class="cute-eye left-eye">◕</div>
+                        <div class="cute-eye right-eye">◕</div>
+
+                        <div class="cute-mouth">⌣</div>
 
                     </div>
 
+                    <div class="cute-body"></div>
 
-                    <div class="dance-body">
-                        🐈‍⬛
-                    </div>
+                    <div class="cute-tail"></div>
 
-
-                    <div class="floating-heart">
-                        ♥
+                    <!-- PINK BOW -->
+                    <div class="big-bow">
+                        <div class="bow-piece one"></div>
+                        <div class="bow-piece two"></div>
+                        <div class="bow-knot"></div>
                     </div>
 
                 </div>
 
 
-                <p class="message-title">
-                    A little message for you:
-                </p>
+                <!-- STARS -->
 
+                <div class="stars-around">
+                    <span>✦</span>
+                    <span>✧</span>
+                    <span>★</span>
+                    <span>✦</span>
+                    <span>✧</span>
+                    <span>♥</span>
+                </div>
+
+
+                <h3>A little message for you:</h3>
 
                 <textarea
                     id="message"
-                    placeholder="Tulis kata-kata yang ingin kamu sampaikan kepadanya..."
-                ></textarea>
-
+                    placeholder="Tulis kata-kata yang ingin kamu sampaikan kepadanya...">
+                </textarea>
 
                 <button
-                    class="send-btn"
-                    onclick="sendMessage()"
-                >
+                    class="save-button"
+                    onclick="sendMessage()">
                     ♥ SAVE MY WORDS
                 </button>
 
-
-                <p id="result"></p>
+                <div id="result"></div>
 
             </div>
 
@@ -254,5 +260,4 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
